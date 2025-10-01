@@ -16,8 +16,7 @@ function App() {
             {/* Bagian Kiri - Gambar */}
             <div className="w-1/2">
               <img 
-                src="public/img/Gedug-G-Udinus.jpg" 
-                alt="Login Illustration" 
+                src="public/Gedug-G-Udinus.jpg" 
                 className="w-full h-full object-cover object-center rounded-l-lg"
               />
             </div>
