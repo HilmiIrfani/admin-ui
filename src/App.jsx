@@ -1,86 +1,81 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const courses = [
+    {
+      title: "System Administration and IT Infrastructure Services",
+    },
+    {
+      title: "Operating Systems Becoming a Power User",
+    },
+    {
+      title: "The Bits and Bytes of Computer Networking",
+    },
+    {
+      title: "Technical Support Fundamentals",
+    },
+    {
+      title: "How to Succeed at: Writing Applications",
+    },
+    {
+      title: "Medicine Administration for Carers",
+    },
+  ];
 
   return (
     <>
-      <div className="font-sans text-gray-900 antialiased">
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-          {/* Container Utama */}
-          <div className="bg-white shadow-md overflow-hidden sm:rounded-lg flex w-[900px]">
-            
-            {/* Bagian Kiri - Gambar */}
-            <div className="w-1/2">
-              <img 
-                src="Gedug-G-Udinus.jpg" 
-                className="w-full h-full object-cover object-center rounded-l-lg"
-              />
-            </div>
+      <div className="p-6 grid grid-cols-3 gap-6">
+        {courses.map((course, index) => (
+          <div key={index} 
+          className="shadow rounded-lg overflow-hidden flex flex-col
+          hover:border hover:order-gray-500
+          hover:shadow-lg hover:scale-105 transition-transform duration300"
+          >
+            {/* Image */}
+            <img
+              src="https://www.placehold.co/300x200"
+              alt={course.title}
+              className="w-full h-44 object-cover"
+            />
 
-            {/* Bagian Kanan - Form Login */}
-            <div className="w-1/2 px-8 py-6">
-              <form method="POST" action="#">
-                <h1 className="text-2xl font-bold mb-8 text-center">Login</h1>
+                       {/* Content */}
+            <div className="p-4 bg-red-100 flex flex-col justify-between h-full">
+              <h3 className="text-lg font-semibold mb-4">{course.title}</h3>
 
-                {/* Email */}
-                <div>
-                  <label
-                    className="block font-medium text-sm text-gray-700 mb-1"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    className="px-3 py-2 border border-gray-300 focus:border-blue-500 focus:outline-blue-500 rounded-md shadow-sm block w-full"
-                    id="email"
-                    type="email"
-                    name="email"
-                    required
-                    autoFocus
-                    autoComplete="username"
-                    placeholder="Masukkan email"
+             							<div className="bg-red-50 p-2 rounded-lg">
+                <div className="text-sm text-gray-500 mt-2 flex justify-between">
+                  <span>👥 123 users</span>
+                  <span>⏱ 60 min</span>
+                </div>
+
+                {/* Author */}
+                <div className="mt-3 mb-2 flex items-center gap-2">
+                  <img
+                    src="https://www.placehold.co/50x50"
+                    alt="Author's Avatar"
+                    className="w-12 h-12 rounded-full object-cover"
                   />
+                  <div>
+                    <p className="text-sm font-medium">Author's Name</p>
+                    <p className="text-xs text-gray-500">Designer</p>
+                  </div>
                 </div>
+              </div>
 
-                {/* Password */}
-                <div className="mt-4">
-                  <label
-                    className="block font-medium text-sm text-gray-700 mb-1"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                  <input
-                    className="px-3 py-2 border border-gray-300 focus:border-blue-500 focus:outline-blue-500 rounded-md shadow-sm block w-full"
-                    id="password"
-                    type="password"
-                    name="password"
-                    required
-                    autoComplete="current-password"
-                    placeholder="Masukkan password"
-                  />
-                </div>
-
-                {/* Tombol Login */}
-                <div className="mt-8">
-                  <button
-                    type="submit"
-                    className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  >
-                    Login
-                  </button>
-                </div>
-              </form>
+                            {/* Footer */}
+              <div className="mt-4 flex items-center justify-between">
+                <div className="bg-white py-2 px-4 rounded">$123</div>
+                <button className="bg-red-700 hover:bg-red-900 active:bg-red-500
+                 text-white px-4 py-2 rounded text-sm">
+                  Get Started
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
