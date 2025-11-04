@@ -24,7 +24,7 @@ function UserCard(props) {
             ))}
 
             <button
-                className={`${clicked ? "bg-special-green" : "bg-gray-01"} text-white p-2 rounded-md`}
+                className={`w-full ${clicked ? "bg-special-green" : "bg-gray-01"} text-white p-2 rounded-md`}
                 onClick={() => setClicked(true)}
             >
                 {clicked ? "Tombol sudah diklik" : "Silakan Klik"}
