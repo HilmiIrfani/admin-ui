@@ -7,13 +7,21 @@ function PostCard(props) {
 
 
     return (
-        <div className="bg-white p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:border-black hover:border-2 hover:bg-[#ffb6bf] flex flex-col justify-between">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2 text-center">{props.title}</h2>
-            <p className="text-gray-600 text-center mt-2">
-                <span className="font-medium"></span>{body}
-            </p>
+        <div className="bg-white hover:bg-red-50 p-6 rounded-lg shadow hover:shadow-lg hover:border transition-shadow text-center flex flex-col justify-between hover:scale-105">
+            <div>
+                <h2 className="text-xl font-semibold text-gray-800 mb-2 capitalize">
+                    {title}
+                </h2>
+                <p className="text-gray-600">{body}</p>
+            </div>
 
-            <button className={clicked ? "bg-special-red2 text-white p-2 rounded-md w-full mt-auto" : "bg-gray-01 text-white p-2 rounded-md w-full mt-auto"}
+            <button
+                className={`text-white p-2 rounded-md mt-2 
+            ${clicked
+                        ? "bg-red-700 hover:bg-special-red "
+                        : "bg-gray-01 hover:bg-gray-02"
+                    }
+          `}
                 onClick={() => setClicked(true)}
             >
                 {clicked ? "Tombol sudah diklik" : "Silakan Klik"}
