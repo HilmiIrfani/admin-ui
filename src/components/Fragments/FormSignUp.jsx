@@ -94,9 +94,9 @@ function FormSignUp() {
             {/* link start */}
             <p className="text-center text-sm mt-6">
                 Already have an account?{" "}
-                <a href="#" className="text-teal-600 font-medium">
+                <link to="/login" className="text-teal-600 font-medium">
                     Sign in here
-                </a>
+                </link>
             </p>
             {/* link end */}
         </>
