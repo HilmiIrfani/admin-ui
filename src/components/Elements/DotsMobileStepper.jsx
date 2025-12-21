@@ -53,7 +53,11 @@ export default function DotsMobileStepper(props) {
                     </Button>
                 }
                 backButton={
-                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                    <Button size="small"
+                        onClick={handleBack}
+                        disabled={activeStep === 0}
+                        sx={{ color: "black" }}
+                    >
                         {theme.direction === "rtl" ? (
                             <KeyboardArrowRight />
                         ) : (
