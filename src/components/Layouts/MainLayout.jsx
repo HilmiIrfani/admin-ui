@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Logo from "../Elements/Logo";
 import Input from "../Elements/Input";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Icon from "../Elements/Icon";
 import { NavLink } from "react-router-dom";
+import { ThemeContext } from "../../context/themeContext";
 
-function MainLayout({ children }) {
+function MainLayout(props) {
+    const { children } = props;
+
+    const themes = [
+        { name: "theme-green", bgcolor: "bg-[#299D91]", color: "#299D91" },
+        { name: "theme-blue", bgcolor: "bg-[#1E90FF]", color: "#1E90FF" },
+        { name: "theme-purple", bgcolor: "bg-[#6A5ACD]", color: "#6A5ACD" },
+        { name: "theme-pink", bgcolor: "bg-[#DB7093]", color: "#DB7093" },
+        { name: "theme-brown", bgcolor: "bg-[#8B4513]", color: "#8B4513" },
+    ];
+
+    const { theme, setTheme } = useContext(ThemeContext);
 
     const menu = [
         { id: 1, name: "Overview", icon: <Icon.Overview />, link: "/" },
@@ -18,7 +30,7 @@ function MainLayout({ children }) {
     ];
 
     return (
-        <div className="flex min-h-screen">
+        <div className={`flex min-h-screen ${theme.name}`}>
             {/* Sidebar */}
             <aside className="bg-defaultBlack w-28 sm:w-64 text-special-bg2 flex flex-col justify-between px-7 py-12">
                 <div>
@@ -44,15 +56,29 @@ function MainLayout({ children }) {
                         ))}
                     </nav>
                 </div>
+                <div>
+                    Themes
+                    <div className="flex flex-col sm:flex-row gap-2 items-center">
+                        {themes.map((t) => (
+                            <div
+                                key={t.name}
+                                className={`${t.bgcolor} w-6 h-6 rounded-md cursor-pointer mb-2`}
+                                onClick={() => setTheme(t)}
+                            ></div>
+                        ))}
+                    </div>
+                </div>
 
                 {/* Bottom sidebar */}
                 <div>
-                    <div className="flex bg-special-bg3 text-white px-4 py-3 rounded-md">
-                        <div className="mx-auto sm:mx-0">
-                            <Icon.Logout />
+                    <NavLink to="/Login">
+                        <div className="flex bg-special-bg3 text-white px-4 py-3 rounded-md">
+                            <div className="mx-auto sm:mx-0 text-primary">
+                                <Icon.Logout />
+                            </div>
+                            <div className="ms-3 hidden sm:block">Logout</div>
                         </div>
-                        <div className="ms-3 hidden sm:block">Logout</div>
-                    </div>
+                    </NavLink>
 
                     <div className="border my-10 border-b-special-bg"></div>
 
@@ -68,10 +94,10 @@ function MainLayout({ children }) {
                         </div>
                     </div>
                 </div>
-            </aside>
+            </aside >
 
             {/* Content */}
-            <div className="bg-special-mainBg flex-1 flex flex-col">
+            < div className="bg-special-mainBg flex-1 flex flex-col" >
                 <div className="border-b border-gray-05 px-6 py-7 flex justify-between items-center">
                     <div className="flex items-center">
                         <div className="font-bold text-2xl me-6">Username</div>
@@ -83,7 +109,7 @@ function MainLayout({ children }) {
 
                     <div className="flex items-center">
                         <div className="me-10">
-                            <NotificationsIcon className="text-gray-01 scale-110" />
+                            <NotificationsIcon className="text-primary scale-110" />
                         </div>
                         <Input
                             backgroundColor="bg-white"
@@ -96,8 +122,8 @@ function MainLayout({ children }) {
                 <main className="flex-1 px-6 py-4">
                     {children}
                 </main>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }
 
