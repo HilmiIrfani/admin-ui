@@ -4,9 +4,11 @@ import FormSignIn from '../components/Fragments/FormSignIn';
 import { loginService } from '../services/authService';
 import { AuthContext } from '../context/authContext';
 import AppSnackbar from '../components/Fragments/Snackbar';
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
     const { login } = React.useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [snackbar, setSnackbar] = useState({
         open: false,
@@ -23,12 +25,13 @@ function SignIn() {
             const { refreshToken } = await loginService(email, password);
 
             login(refreshToken);
+            navigate("/");
         } catch (err) {
             console.error(err.msg);
             setSnackbar({ open: true, message: err.msg, severity: "error" });
         }
-
     };
+
 
     return (
         <AuthLayout>
